@@ -7,20 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0C7FA5126EFAEC800F021D5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7FA5026EFAEC800F021D5 /* TabBarController.swift */; };
+		D0C7FA5326EFAF5F00F021D5 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7FA5226EFAF5F00F021D5 /* ContactViewController.swift */; };
+		D0C7FA5526EFAF6A00F021D5 /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7FA5426EFAF6A00F021D5 /* DiscoveryViewController.swift */; };
+		D0C7FA5726EFAF7700F021D5 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7FA5626EFAF7700F021D5 /* MeViewController.swift */; };
+		D0C7FA5D26EFB95600F021D5 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7FA5C26EFB95600F021D5 /* UIColor+Ext.swift */; };
 		D0D8E80D26EFA9B7007DF995 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D8E80C26EFA9B7007DF995 /* AppDelegate.swift */; };
 		D0D8E80F26EFA9B7007DF995 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D8E80E26EFA9B7007DF995 /* SceneDelegate.swift */; };
-		D0D8E81126EFA9B7007DF995 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D8E81026EFA9B7007DF995 /* ViewController.swift */; };
-		D0D8E81426EFA9B7007DF995 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0D8E81226EFA9B7007DF995 /* Main.storyboard */; };
+		D0D8E81126EFA9B7007DF995 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D8E81026EFA9B7007DF995 /* MessageViewController.swift */; };
 		D0D8E81626EFA9B8007DF995 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0D8E81526EFA9B8007DF995 /* Assets.xcassets */; };
 		D0D8E81926EFA9B8007DF995 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0D8E81726EFA9B8007DF995 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D0C7FA5026EFAEC800F021D5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		D0C7FA5226EFAF5F00F021D5 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		D0C7FA5426EFAF6A00F021D5 /* DiscoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
+		D0C7FA5626EFAF7700F021D5 /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
+		D0C7FA5C26EFB95600F021D5 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		D0D8E80926EFA9B7007DF995 /* WeChat Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeChat Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0D8E80C26EFA9B7007DF995 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0D8E80E26EFA9B7007DF995 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D0D8E81026EFA9B7007DF995 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D0D8E81326EFA9B7007DF995 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D0D8E81026EFA9B7007DF995 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		D0D8E81526EFA9B8007DF995 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0D8E81826EFA9B8007DF995 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0D8E81A26EFA9B8007DF995 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,6 +45,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D0C7FA4E26EFADBF00F021D5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D0C7FA5026EFAEC800F021D5 /* TabBarController.swift */,
+				D0D8E81026EFA9B7007DF995 /* MessageViewController.swift */,
+				D0C7FA5226EFAF5F00F021D5 /* ContactViewController.swift */,
+				D0C7FA5426EFAF6A00F021D5 /* DiscoveryViewController.swift */,
+				D0C7FA5626EFAF7700F021D5 /* MeViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D0C7FA4F26EFAE7000F021D5 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				D0D8E81A26EFA9B8007DF995 /* Info.plist */,
+			);
+			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		D0C7FA5826EFB90100F021D5 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D0C7FA5B26EFB92A00F021D5 /* Extensions */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D0C7FA5B26EFB92A00F021D5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D0C7FA5C26EFB95600F021D5 /* UIColor+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		D0D8E80026EFA9B7007DF995 = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +100,13 @@
 		D0D8E80B26EFA9B7007DF995 /* WeChat Clone */ = {
 			isa = PBXGroup;
 			children = (
+				D0C7FA5826EFB90100F021D5 /* Helpers */,
+				D0C7FA4E26EFADBF00F021D5 /* Controllers */,
 				D0D8E80C26EFA9B7007DF995 /* AppDelegate.swift */,
 				D0D8E80E26EFA9B7007DF995 /* SceneDelegate.swift */,
-				D0D8E81026EFA9B7007DF995 /* ViewController.swift */,
-				D0D8E81226EFA9B7007DF995 /* Main.storyboard */,
 				D0D8E81526EFA9B8007DF995 /* Assets.xcassets */,
 				D0D8E81726EFA9B8007DF995 /* LaunchScreen.storyboard */,
-				D0D8E81A26EFA9B8007DF995 /* Info.plist */,
+				D0C7FA4F26EFAE7000F021D5 /* Supporting files */,
 			);
 			path = "WeChat Clone";
 			sourceTree = "<group>";
@@ -126,7 +170,6 @@
 			files = (
 				D0D8E81926EFA9B8007DF995 /* LaunchScreen.storyboard in Resources */,
 				D0D8E81626EFA9B8007DF995 /* Assets.xcassets in Resources */,
-				D0D8E81426EFA9B7007DF995 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,23 +180,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0D8E81126EFA9B7007DF995 /* ViewController.swift in Sources */,
+				D0D8E81126EFA9B7007DF995 /* MessageViewController.swift in Sources */,
+				D0C7FA5726EFAF7700F021D5 /* MeViewController.swift in Sources */,
+				D0C7FA5526EFAF6A00F021D5 /* DiscoveryViewController.swift in Sources */,
+				D0C7FA5126EFAEC800F021D5 /* TabBarController.swift in Sources */,
 				D0D8E80D26EFA9B7007DF995 /* AppDelegate.swift in Sources */,
+				D0C7FA5D26EFB95600F021D5 /* UIColor+Ext.swift in Sources */,
 				D0D8E80F26EFA9B7007DF995 /* SceneDelegate.swift in Sources */,
+				D0C7FA5326EFAF5F00F021D5 /* ContactViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D0D8E81226EFA9B7007DF995 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D0D8E81326EFA9B7007DF995 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D0D8E81726EFA9B8007DF995 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -288,7 +328,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BV97A5VZCV;
-				INFOPLIST_FILE = "WeChat Clone/Info.plist";
+				INFOPLIST_FILE = "WeChat Clone/Supporting files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,7 +347,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BV97A5VZCV;
-				INFOPLIST_FILE = "WeChat Clone/Info.plist";
+				INFOPLIST_FILE = "WeChat Clone/Supporting files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
