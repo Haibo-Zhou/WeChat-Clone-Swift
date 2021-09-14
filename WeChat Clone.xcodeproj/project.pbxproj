@@ -12,6 +12,11 @@
 		D0C7FA5526EFAF6A00F021D5 /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7FA5426EFAF6A00F021D5 /* DiscoveryViewController.swift */; };
 		D0C7FA5726EFAF7700F021D5 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7FA5626EFAF7700F021D5 /* MeViewController.swift */; };
 		D0C7FA5D26EFB95600F021D5 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7FA5C26EFB95600F021D5 /* UIColor+Ext.swift */; };
+		D0C7FA6026F03D8A00F021D5 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7FA5F26F03D8A00F021D5 /* Conversation.swift */; };
+		D0C7FA6326F03E7A00F021D5 /* ImageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7FA6226F03E7A00F021D5 /* ImageWrapper.swift */; };
+		D0C7FA6526F03E9900F021D5 /* StorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7FA6426F03E9900F021D5 /* StorageError.swift */; };
+		D0C7FA6726F03EE900F021D5 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7FA6626F03EE900F021D5 /* UIImage+Ext.swift */; };
+		D0C7FA6A26F0431400F021D5 /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7FA6926F0431400F021D5 /* ConversationTableViewCell.swift */; };
 		D0D8E80D26EFA9B7007DF995 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D8E80C26EFA9B7007DF995 /* AppDelegate.swift */; };
 		D0D8E80F26EFA9B7007DF995 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D8E80E26EFA9B7007DF995 /* SceneDelegate.swift */; };
 		D0D8E81126EFA9B7007DF995 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D8E81026EFA9B7007DF995 /* MessageViewController.swift */; };
@@ -25,6 +30,11 @@
 		D0C7FA5426EFAF6A00F021D5 /* DiscoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
 		D0C7FA5626EFAF7700F021D5 /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		D0C7FA5C26EFB95600F021D5 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		D0C7FA5F26F03D8A00F021D5 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		D0C7FA6226F03E7A00F021D5 /* ImageWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWrapper.swift; sourceTree = "<group>"; };
+		D0C7FA6426F03E9900F021D5 /* StorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageError.swift; sourceTree = "<group>"; };
+		D0C7FA6626F03EE900F021D5 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
+		D0C7FA6926F0431400F021D5 /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
 		D0D8E80926EFA9B7007DF995 /* WeChat Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeChat Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0D8E80C26EFA9B7007DF995 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0D8E80E26EFA9B7007DF995 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +78,7 @@
 		D0C7FA5826EFB90100F021D5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D0C7FA6126F03E6200F021D5 /* Library */,
 				D0C7FA5B26EFB92A00F021D5 /* Extensions */,
 			);
 			path = Helpers;
@@ -77,8 +88,34 @@
 			isa = PBXGroup;
 			children = (
 				D0C7FA5C26EFB95600F021D5 /* UIColor+Ext.swift */,
+				D0C7FA6626F03EE900F021D5 /* UIImage+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D0C7FA5E26F03D5E00F021D5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D0C7FA5F26F03D8A00F021D5 /* Conversation.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D0C7FA6126F03E6200F021D5 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				D0C7FA6226F03E7A00F021D5 /* ImageWrapper.swift */,
+				D0C7FA6426F03E9900F021D5 /* StorageError.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		D0C7FA6826F042F100F021D5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D0C7FA6926F0431400F021D5 /* ConversationTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		D0D8E80026EFA9B7007DF995 = {
@@ -100,6 +137,8 @@
 		D0D8E80B26EFA9B7007DF995 /* WeChat Clone */ = {
 			isa = PBXGroup;
 			children = (
+				D0C7FA6826F042F100F021D5 /* Views */,
+				D0C7FA5E26F03D5E00F021D5 /* Model */,
 				D0C7FA5826EFB90100F021D5 /* Helpers */,
 				D0C7FA4E26EFADBF00F021D5 /* Controllers */,
 				D0D8E80C26EFA9B7007DF995 /* AppDelegate.swift */,
@@ -181,11 +220,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0D8E81126EFA9B7007DF995 /* MessageViewController.swift in Sources */,
+				D0C7FA6526F03E9900F021D5 /* StorageError.swift in Sources */,
+				D0C7FA6326F03E7A00F021D5 /* ImageWrapper.swift in Sources */,
 				D0C7FA5726EFAF7700F021D5 /* MeViewController.swift in Sources */,
 				D0C7FA5526EFAF6A00F021D5 /* DiscoveryViewController.swift in Sources */,
+				D0C7FA6026F03D8A00F021D5 /* Conversation.swift in Sources */,
 				D0C7FA5126EFAEC800F021D5 /* TabBarController.swift in Sources */,
 				D0D8E80D26EFA9B7007DF995 /* AppDelegate.swift in Sources */,
 				D0C7FA5D26EFB95600F021D5 /* UIColor+Ext.swift in Sources */,
+				D0C7FA6A26F0431400F021D5 /* ConversationTableViewCell.swift in Sources */,
+				D0C7FA6726F03EE900F021D5 /* UIImage+Ext.swift in Sources */,
 				D0D8E80F26EFA9B7007DF995 /* SceneDelegate.swift in Sources */,
 				D0C7FA5326EFAF5F00F021D5 /* ContactViewController.swift in Sources */,
 			);
@@ -329,6 +373,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BV97A5VZCV;
 				INFOPLIST_FILE = "WeChat Clone/Supporting files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -348,6 +393,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BV97A5VZCV;
 				INFOPLIST_FILE = "WeChat Clone/Supporting files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
