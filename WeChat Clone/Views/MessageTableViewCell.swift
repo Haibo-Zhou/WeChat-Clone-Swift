@@ -7,9 +7,28 @@
 
 import UIKit
 
-class ConversationTableViewCell: UITableViewCell {
+class MessageTableViewCell: UITableViewCell {
     // cell id
     static let cellIdentifier = "conversationCell"
+    
+    // converation property observer
+    var message: Message? {
+        didSet {
+            titleLabel.text = message?.friend?.name
+            
+            if let profileImageName = message?.friend?.profileImageName {
+                imageCover.image = UIImage(named: profileImageName)
+            }
+            
+            messageLabel.text = message?.text
+            
+            if let date = message?.date {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "h:mm a"
+                dateLabel.text = dateFormatter.string(from: date)
+            }
+        }
+    }
     
     // UI elements
     lazy var imageCover: UIImageView = {
@@ -41,7 +60,7 @@ class ConversationTableViewCell: UITableViewCell {
         return label
     }()
     
-    lazy var subTitleLabel: UILabel = {
+    lazy var messageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 15, weight: .regular)
@@ -61,7 +80,7 @@ class ConversationTableViewCell: UITableViewCell {
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: ConversationTableViewCell.cellIdentifier)
+        super.init(style: style, reuseIdentifier: MessageTableViewCell.cellIdentifier)
         
         setupLayout()
     }
@@ -70,7 +89,7 @@ class ConversationTableViewCell: UITableViewCell {
         contentView.addSubview(imageCover)
         contentView.addSubview(bellImageView)
         contentView.addSubview(titleLabel)
-        contentView.addSubview(subTitleLabel)
+        contentView.addSubview(messageLabel)
         contentView.addSubview(dateLabel)
         
         let g = contentView.layoutMarginsGuide
@@ -84,14 +103,14 @@ class ConversationTableViewCell: UITableViewCell {
             titleLabel.topAnchor.constraint(equalTo: imageCover.topAnchor, constant: 6),
             titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: dateLabel.leadingAnchor),
 
-            subTitleLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            subTitleLabel.bottomAnchor.constraint(equalTo: imageCover.bottomAnchor, constant: -6),
-            subTitleLabel.trailingAnchor.constraint(lessThanOrEqualTo: bellImageView.leadingAnchor),
+            messageLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            messageLabel.bottomAnchor.constraint(equalTo: imageCover.bottomAnchor, constant: -6),
+            messageLabel.trailingAnchor.constraint(lessThanOrEqualTo: bellImageView.leadingAnchor),
 
             dateLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor),
             dateLabel.trailingAnchor.constraint(equalTo: g.trailingAnchor),
 
-            bellImageView.centerYAnchor.constraint(equalTo: subTitleLabel.centerYAnchor),
+            bellImageView.centerYAnchor.constraint(equalTo: messageLabel.centerYAnchor),
             bellImageView.trailingAnchor.constraint(equalTo: dateLabel.trailingAnchor),
             bellImageView.widthAnchor.constraint(equalToConstant: 16)
         ])

@@ -9,11 +9,13 @@ import UIKit
 
 class MessageViewController: UIViewController {
     
+    var messages: [Message]?
+    
     // MARK: - UI elements
     lazy var tableView: UITableView = {
         let table = UITableView()
 //        table.translatesAutoresizingMaskIntoConstraints = false
-        table.register(ConversationTableViewCell.self, forCellReuseIdentifier: ConversationTableViewCell.cellIdentifier)
+        table.register(MessageTableViewCell.self, forCellReuseIdentifier: MessageTableViewCell.cellIdentifier)
         table.dataSource = self
         table.delegate = self
         return table
@@ -39,6 +41,7 @@ class MessageViewController: UIViewController {
         self.navigationItem.title = "微信(199)"
         
         setupViews()
+        setupData()
     }
     
     func setupViews() {
@@ -54,24 +57,28 @@ class MessageViewController: UIViewController {
         // setup search bar
 //        setupSearchBar()
     }
+    
+    
 }
 
 // MARK: - tableView datasource
 extension MessageViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 26
+        return messages?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ConversationTableViewCell.cellIdentifier, for: indexPath) as? ConversationTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MessageTableViewCell.cellIdentifier, for: indexPath) as? MessageTableViewCell else {
             fatalError("Unable to dequeue ConversationTableViewCell")
         }
         
-        cell.imageCover.image = UIImage(named: "gen")
-        cell.bellImageView.image = UIImage(systemName: "bell.slash")
-        cell.titleLabel.text = "熊孩子书店 ｜ 热爱生活的小伙伴们"
-        cell.subTitleLabel.text = "杜丘: 健谈但却不是话唠那种"
-        cell.dateLabel.text = "10:12 AM"
+        cell.message = messages?[indexPath.row]
+        
+//        cell.imageCover.image = UIImage(named: "gen")
+//        cell.bellImageView.image = UIImage(systemName: "bell.slash")
+//        cell.titleLabel.text = "熊孩子书店 ｜ 热爱生活的小伙伴们"
+//        cell.subTitleLabel.text = "杜丘: 健谈但却不是话唠那种"
+//        cell.dateLabel.text = "10:12 AM"
         
         return cell
     }
