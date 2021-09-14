@@ -75,7 +75,7 @@ extension MessageViewController: UITableViewDataSource {
         cell.message = messages?[indexPath.row]
         
 //        cell.imageCover.image = UIImage(named: "gen")
-//        cell.bellImageView.image = UIImage(systemName: "bell.slash")
+        cell.bellImageView.image = UIImage(systemName: "bell.slash")
 //        cell.titleLabel.text = "熊孩子书店 ｜ 热爱生活的小伙伴们"
 //        cell.subTitleLabel.text = "杜丘: 健谈但却不是话唠那种"
 //        cell.dateLabel.text = "10:12 AM"

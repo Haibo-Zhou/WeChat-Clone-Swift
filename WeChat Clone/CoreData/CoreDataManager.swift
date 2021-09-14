@@ -23,8 +23,8 @@ class CoreDataManager {
     func fetchMessages(completion: @escaping ([Message]?) -> Void) {
         privateMOC.performAndWait {
             do {
-                print("fetch all messages")
-                printThreadStats()
+//                print("fetch all messages")
+//                printThreadStats()
                 let messages: [Message] = try privateMOC.fetch(Message.fetchRequest())
                 completion(messages)
             } catch {
@@ -35,8 +35,8 @@ class CoreDataManager {
     
     func createFriend(name: String, profileImageName: String, completion: @escaping (Friend?) -> Void) {
         privateMOC.performAndWait {
-            print("create friend")
-            printThreadStats()
+//            print("create friend")
+//            printThreadStats()
             let newFriend = Friend(context: privateMOC)
             newFriend.name = name
             newFriend.profileImageName = profileImageName
@@ -47,8 +47,8 @@ class CoreDataManager {
     
     func createMessage(friend: Friend, text: String, date: Date) {
         privateMOC.performAndWait {
-            print("create message")
-            printThreadStats()
+//            print("create message")
+//            printThreadStats()
             let newMessage = Message(context: privateMOC)
             newMessage.friend = friend
             newMessage.text = text

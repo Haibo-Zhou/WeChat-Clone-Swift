@@ -64,7 +64,7 @@ class MessageTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 15, weight: .regular)
-        label.numberOfLines = 0
+        label.numberOfLines = 1
         label.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 749), for: .horizontal)
         label.textColor = .lightGray
         return label
@@ -105,7 +105,7 @@ class MessageTableViewCell: UITableViewCell {
 
             messageLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             messageLabel.bottomAnchor.constraint(equalTo: imageCover.bottomAnchor, constant: -6),
-            messageLabel.trailingAnchor.constraint(lessThanOrEqualTo: bellImageView.leadingAnchor),
+            messageLabel.trailingAnchor.constraint(lessThanOrEqualTo: bellImageView.leadingAnchor, constant: -20),
 
             dateLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor),
             dateLabel.trailingAnchor.constraint(equalTo: g.trailingAnchor),
