@@ -2,7 +2,7 @@
 //  Friend+CoreDataProperties.swift
 //  WeChat Clone
 //
-//  Created by HaiboZhou on 2021/9/14.
+//  Created by HaiboZhou on 2021/9/15.
 //
 //
 
@@ -17,8 +17,9 @@ extension Friend {
     }
 
     @NSManaged public var name: String?
-    @NSManaged public var profileImageName: String?
+    @NSManaged public var profileImageData: Data?
     @NSManaged public var messages: NSSet?
+    @NSManaged public var thumnail: Thumbnail?
 
 }
 

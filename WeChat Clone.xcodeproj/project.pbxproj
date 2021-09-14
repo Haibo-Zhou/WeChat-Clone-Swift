@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D05B7C3926F0C57F00A43814 /* Message+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B7C3526F0C57F00A43814 /* Message+CoreDataClass.swift */; };
-		D05B7C3A26F0C57F00A43814 /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B7C3626F0C57F00A43814 /* Message+CoreDataProperties.swift */; };
-		D05B7C3B26F0C57F00A43814 /* Friend+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B7C3726F0C57F00A43814 /* Friend+CoreDataClass.swift */; };
-		D05B7C3C26F0C57F00A43814 /* Friend+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B7C3826F0C57F00A43814 /* Friend+CoreDataProperties.swift */; };
 		D05B7C3E26F0DB7F00A43814 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B7C3D26F0DB7F00A43814 /* UIViewController+Ext.swift */; };
+		D05B7C4D26F10CCA00A43814 /* Friend+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B7C4726F10CCA00A43814 /* Friend+CoreDataClass.swift */; };
+		D05B7C4E26F10CCA00A43814 /* Friend+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B7C4826F10CCA00A43814 /* Friend+CoreDataProperties.swift */; };
+		D05B7C4F26F10CCA00A43814 /* Message+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B7C4926F10CCA00A43814 /* Message+CoreDataClass.swift */; };
+		D05B7C5026F10CCA00A43814 /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B7C4A26F10CCA00A43814 /* Message+CoreDataProperties.swift */; };
+		D05B7C5126F10CCA00A43814 /* Thumbnail+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B7C4B26F10CCA00A43814 /* Thumbnail+CoreDataClass.swift */; };
+		D05B7C5226F10CCA00A43814 /* Thumbnail+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B7C4C26F10CCA00A43814 /* Thumbnail+CoreDataProperties.swift */; };
 		D0C7FA5126EFAEC800F021D5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7FA5026EFAEC800F021D5 /* TabBarController.swift */; };
 		D0C7FA5326EFAF5F00F021D5 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7FA5226EFAF5F00F021D5 /* ContactViewController.swift */; };
 		D0C7FA5526EFAF6A00F021D5 /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7FA5426EFAF6A00F021D5 /* DiscoveryViewController.swift */; };
@@ -33,11 +35,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D05B7C3526F0C57F00A43814 /* Message+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D05B7C3626F0C57F00A43814 /* Message+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		D05B7C3726F0C57F00A43814 /* Friend+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D05B7C3826F0C57F00A43814 /* Friend+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D05B7C3D26F0DB7F00A43814 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		D05B7C4726F10CCA00A43814 /* Friend+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D05B7C4826F10CCA00A43814 /* Friend+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D05B7C4926F10CCA00A43814 /* Message+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D05B7C4A26F10CCA00A43814 /* Message+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D05B7C4B26F10CCA00A43814 /* Thumbnail+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thumbnail+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D05B7C4C26F10CCA00A43814 /* Thumbnail+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thumbnail+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D0C7FA5026EFAEC800F021D5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D0C7FA5226EFAF5F00F021D5 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		D0C7FA5426EFAF6A00F021D5 /* DiscoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
@@ -147,10 +151,12 @@
 		D0C7FA6B26F08D5200F021D5 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				D05B7C3526F0C57F00A43814 /* Message+CoreDataClass.swift */,
-				D05B7C3626F0C57F00A43814 /* Message+CoreDataProperties.swift */,
-				D05B7C3726F0C57F00A43814 /* Friend+CoreDataClass.swift */,
-				D05B7C3826F0C57F00A43814 /* Friend+CoreDataProperties.swift */,
+				D05B7C4726F10CCA00A43814 /* Friend+CoreDataClass.swift */,
+				D05B7C4826F10CCA00A43814 /* Friend+CoreDataProperties.swift */,
+				D05B7C4926F10CCA00A43814 /* Message+CoreDataClass.swift */,
+				D05B7C4A26F10CCA00A43814 /* Message+CoreDataProperties.swift */,
+				D05B7C4B26F10CCA00A43814 /* Thumbnail+CoreDataClass.swift */,
+				D05B7C4C26F10CCA00A43814 /* Thumbnail+CoreDataProperties.swift */,
 				D0C7FA6C26F08D6100F021D5 /* CoreDataStack.swift */,
 				D0C7FA6E26F08DAD00F021D5 /* CoreDataManager.swift */,
 			);
@@ -261,27 +267,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D05B7C5126F10CCA00A43814 /* Thumbnail+CoreDataClass.swift in Sources */,
 				D0D8E81126EFA9B7007DF995 /* MessageViewController.swift in Sources */,
 				D0C7FA6526F03E9900F021D5 /* StorageError.swift in Sources */,
 				D05B7C3E26F0DB7F00A43814 /* UIViewController+Ext.swift in Sources */,
 				D0C7FA6326F03E7A00F021D5 /* ImageWrapper.swift in Sources */,
-				D05B7C3B26F0C57F00A43814 /* Friend+CoreDataClass.swift in Sources */,
 				D0C7FA6F26F08DAD00F021D5 /* CoreDataManager.swift in Sources */,
-				D05B7C3926F0C57F00A43814 /* Message+CoreDataClass.swift in Sources */,
 				D0C7FA5726EFAF7700F021D5 /* MeViewController.swift in Sources */,
 				D0C7FA5526EFAF6A00F021D5 /* DiscoveryViewController.swift in Sources */,
+				D05B7C4E26F10CCA00A43814 /* Friend+CoreDataProperties.swift in Sources */,
 				D0C7FA6026F03D8A00F021D5 /* Message.swift in Sources */,
 				D0C7FA5126EFAEC800F021D5 /* TabBarController.swift in Sources */,
 				D0C7FA6D26F08D6100F021D5 /* CoreDataStack.swift in Sources */,
+				D05B7C5226F10CCA00A43814 /* Thumbnail+CoreDataProperties.swift in Sources */,
+				D05B7C5026F10CCA00A43814 /* Message+CoreDataProperties.swift in Sources */,
 				D0D8E80D26EFA9B7007DF995 /* AppDelegate.swift in Sources */,
 				D0C7FA5D26EFB95600F021D5 /* UIColor+Ext.swift in Sources */,
 				D0C7FA6A26F0431400F021D5 /* MessageTableViewCell.swift in Sources */,
+				D05B7C4D26F10CCA00A43814 /* Friend+CoreDataClass.swift in Sources */,
 				D0C7FA6726F03EE900F021D5 /* UIImage+Ext.swift in Sources */,
-				D05B7C3A26F0C57F00A43814 /* Message+CoreDataProperties.swift in Sources */,
 				D0C7FA7226F0910600F021D5 /* WeChat_Clone.xcdatamodeld in Sources */,
-				D05B7C3C26F0C57F00A43814 /* Friend+CoreDataProperties.swift in Sources */,
 				D0D8E80F26EFA9B7007DF995 /* SceneDelegate.swift in Sources */,
 				D0C7FA5326EFAF5F00F021D5 /* ContactViewController.swift in Sources */,
+				D05B7C4F26F10CCA00A43814 /* Message+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

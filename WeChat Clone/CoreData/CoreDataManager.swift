@@ -33,13 +33,14 @@ class CoreDataManager {
         }
     }
     
-    func createFriend(name: String, profileImageName: String, completion: @escaping (Friend?) -> Void) {
+    func createFriend(name: String, profileImage: UIImage?, completion: @escaping (Friend?) -> Void) {
         privateMOC.performAndWait {
 //            print("create friend")
 //            printThreadStats()
             let newFriend = Friend(context: privateMOC)
             newFriend.name = name
-            newFriend.profileImageName = profileImageName
+//            newFriend.profileImageName = profileImageName
+            newFriend.profileImageData = profileImage?.cache_toData()
             synchronize()
             completion(newFriend)
         }

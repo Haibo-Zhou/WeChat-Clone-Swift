@@ -16,8 +16,12 @@ class MessageTableViewCell: UITableViewCell {
         didSet {
             titleLabel.text = message?.friend?.name
             
-            if let profileImageName = message?.friend?.profileImageName {
-                imageCover.image = UIImage(named: profileImageName)
+//            if let profileImageName = message?.friend?.profileImageName {
+//                imageCover.image = UIImage(named: profileImageName)
+//            }
+            
+            if let profileImageData = message?.friend?.profileImageData {
+                imageCover.image = UIImage(data: profileImageData)
             }
             
             messageLabel.text = message?.text

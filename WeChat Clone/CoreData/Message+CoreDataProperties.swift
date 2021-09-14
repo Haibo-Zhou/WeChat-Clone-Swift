@@ -2,7 +2,7 @@
 //  Message+CoreDataProperties.swift
 //  WeChat Clone
 //
-//  Created by HaiboZhou on 2021/9/14.
+//  Created by HaiboZhou on 2021/9/15.
 //
 //
 
