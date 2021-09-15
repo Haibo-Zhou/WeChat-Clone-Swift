@@ -21,8 +21,12 @@ extension UIColor {
     static let myPink: UIColor = UIColor(r: 252, g: 209, b: 210)
     static let myEmailBlue: UIColor = UIColor(r: 29, g: 120, b: 242)
     
-//    static let bgColor: UIColor = UIColor(named: "bgColor")!
-//    static let buttonColor: UIColor = UIColor(named: "buttonColor")!
+    // a gray/black color for ChatLog page background
+    static let chatLogBgColor: UIColor = UIColor(named: "chatLogBgColor")!
+    // the green bg color for chat message bubble
+    static let msgGreenBgColor: UIColor = UIColor(named: "msgGreenBgColor")!
+    // the gray bg color for chat message bubble
+    static let msgGrayBgColor: UIColor = UIColor(named: "msgGrayBgColor")!
     
     static let myBlueHexcode: UInt = 0x2866BF
     static let myGreenHexcode: UInt = 0x28B473

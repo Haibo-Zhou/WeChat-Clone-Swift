@@ -26,6 +26,18 @@ class MessageTableViewCell: UITableViewCell {
             if let date = message?.date {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "h:mm a"
+                
+                let elapsedTimeInSeconds = Date().timeIntervalSince(date)
+                let secondsInDay: TimeInterval = 60 * 60 * 24
+                
+                if elapsedTimeInSeconds > 7 * secondsInDay { // time before a week
+                    dateFormatter.dateFormat = "yyyy/MM/dd"
+                } else if elapsedTimeInSeconds > secondsInDay { // time before a day
+                    // give a Chinese format display for time before today
+                    dateFormatter.locale = Locale(identifier: "zh")
+                    dateFormatter.dateFormat = "EEE"
+                }
+                
                 dateLabel.text = dateFormatter.string(from: date)
             }
         }

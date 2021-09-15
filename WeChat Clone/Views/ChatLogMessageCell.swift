@@ -14,29 +14,51 @@ class ChatLogMessageCell: UICollectionViewCell {
     // MARK: UI elements
     lazy var messageTextView: UITextView = {
         let textView = UITextView()
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.font = .systemFont(ofSize: 16)
+        textView.font = .systemFont(ofSize: 18)
         textView.text = "Sample message"
+        textView.backgroundColor = .clear
         return textView
+    }()
+    
+    lazy var textBubbleView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .msgGrayBgColor
+        view.layer.cornerRadius = 15
+        view.layer.masksToBounds = true
+        return view
+    }()
+    
+    lazy var profileImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 8
+        imageView.clipsToBounds = true
+//        imageView.backgroundColor = .systemRed
+        return imageView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setupViews()
     }
     
     func setupViews() {
-//        backgroundColor = .myBlue
+//        backgroundColor = .brown
+        addSubview(textBubbleView)
         addSubview(messageTextView)
+        addSubview(profileImageView)
         
         let g = contentView
         NSLayoutConstraint.activate([
-            messageTextView.leadingAnchor.constraint(equalTo: g.leadingAnchor),
-            messageTextView.trailingAnchor.constraint(equalTo: g.trailingAnchor),
-            messageTextView.topAnchor.constraint(equalTo: g.topAnchor),
-            messageTextView.bottomAnchor.constraint(equalTo: g.bottomAnchor)
+            profileImageView.leadingAnchor.constraint(equalTo: g.leadingAnchor, constant: 8),
+            profileImageView.widthAnchor.constraint(equalToConstant: 40),
+            profileImageView.heightAnchor.constraint(equalTo: profileImageView.widthAnchor),
+            profileImageView.topAnchor.constraint(equalTo: g.topAnchor),
+//            profileImageView.bottomAnchor.constraint(equalTo: g.bottomAnchor)
+            
         ])
+
     }
     
     required init?(coder: NSCoder) {

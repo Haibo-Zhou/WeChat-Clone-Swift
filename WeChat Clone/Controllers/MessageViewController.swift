@@ -74,7 +74,7 @@ extension MessageViewController: UITableViewDataSource {
         
         cell.message = messages?[indexPath.row]
         
-        // should add this mute bell state into DB too, but I would leave it for now
+        // I could give a muteBell property to indicate if this friend is muted, but I would leave it for now
         cell.bellImageView.image = UIImage(systemName: "bell.slash")
         
         return cell

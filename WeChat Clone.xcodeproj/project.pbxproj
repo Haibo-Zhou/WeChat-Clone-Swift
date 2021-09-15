@@ -16,6 +16,7 @@
 		D05B7C5226F10CCA00A43814 /* Thumbnail+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B7C4C26F10CCA00A43814 /* Thumbnail+CoreDataProperties.swift */; };
 		D05B7C5426F1A76F00A43814 /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B7C5326F1A76F00A43814 /* ChatLogController.swift */; };
 		D05B7C5626F1ADD900A43814 /* ChatLogMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B7C5526F1ADD900A43814 /* ChatLogMessageCell.swift */; };
+		D05B7C5A26F1D0C900A43814 /* MessageControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B7C5926F1D0C900A43814 /* MessageControllerHelper.swift */; };
 		D0C7FA5126EFAEC800F021D5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7FA5026EFAEC800F021D5 /* TabBarController.swift */; };
 		D0C7FA5326EFAF5F00F021D5 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7FA5226EFAF5F00F021D5 /* ContactViewController.swift */; };
 		D0C7FA5526EFAF6A00F021D5 /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7FA5426EFAF6A00F021D5 /* DiscoveryViewController.swift */; };
@@ -46,6 +47,7 @@
 		D05B7C4C26F10CCA00A43814 /* Thumbnail+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thumbnail+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D05B7C5326F1A76F00A43814 /* ChatLogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
 		D05B7C5526F1ADD900A43814 /* ChatLogMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogMessageCell.swift; sourceTree = "<group>"; };
+		D05B7C5926F1D0C900A43814 /* MessageControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageControllerHelper.swift; sourceTree = "<group>"; };
 		D0C7FA5026EFAEC800F021D5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D0C7FA5226EFAF5F00F021D5 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		D0C7FA5426EFAF6A00F021D5 /* DiscoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				D0C7FA5C26EFB95600F021D5 /* UIColor+Ext.swift */,
 				D0C7FA6626F03EE900F021D5 /* UIImage+Ext.swift */,
 				D05B7C3D26F0DB7F00A43814 /* UIViewController+Ext.swift */,
+				D05B7C5926F1D0C900A43814 /* MessageControllerHelper.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				D05B7C3E26F0DB7F00A43814 /* UIViewController+Ext.swift in Sources */,
 				D0C7FA6326F03E7A00F021D5 /* ImageWrapper.swift in Sources */,
 				D0C7FA6F26F08DAD00F021D5 /* CoreDataManager.swift in Sources */,
+				D05B7C5A26F1D0C900A43814 /* MessageControllerHelper.swift in Sources */,
 				D0C7FA5726EFAF7700F021D5 /* MeViewController.swift in Sources */,
 				D0C7FA5526EFAF6A00F021D5 /* DiscoveryViewController.swift in Sources */,
 				D05B7C4E26F10CCA00A43814 /* Friend+CoreDataProperties.swift in Sources */,
