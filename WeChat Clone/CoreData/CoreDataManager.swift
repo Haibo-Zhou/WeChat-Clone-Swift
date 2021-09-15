@@ -81,16 +81,17 @@ class CoreDataManager {
         }
     }
     
-//    func createMessage(friend: Friend, text: String, date: Date, completion: @escaping (Message?) -> Void) {
-//        privateMOC.performAndWait {
-//            let newMessage = Message(context: privateMOC)
-//            newMessage.friend = friend
-//            newMessage.text = text
-//            newMessage.date = date
-//            synchronize()
-//            completion(newMessage)
-//        }
-//    }
+    func createMessage(friend: Friend, text: String, minutesAgo: Double, isSender: Bool = false, completion: @escaping (Message) -> Void) {
+        privateMOC.performAndWait {
+            let newMessage = Message(context: privateMOC)
+            newMessage.friend = friend
+            newMessage.text = text
+            newMessage.date = Date().addingTimeInterval(-minutesAgo * 60)
+            newMessage.isSender = isSender
+            synchronize()
+            completion(newMessage)
+        }
+    }
     
     func removeAllFromEntity(entityName: String) {
         privateMOC.performAndWait {

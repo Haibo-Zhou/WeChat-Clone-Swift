@@ -14,6 +14,7 @@ class ChatLogController: UIViewController, UITextFieldDelegate {
             navigationItem.title = friend?.name
             messages = friend?.messages?.allObjects as? [Message]
             messages?.sort {($0.date ?? Date() < $1.date ?? Date())}
+            print("messages count in ChatLog page: \(String(describing: messages?.count))")
         }
     }
     
@@ -123,17 +124,14 @@ class ChatLogController: UIViewController, UITextFieldDelegate {
     
     func configureCollectionView() {
         let layout = UICollectionViewFlowLayout()
-//        layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 10, right: 20)
-//        layout.minimumLineSpacing = 50
-        //        layout.itemSize = CGSize(width: view.bounds.size.width * 0.45, height: view.bounds.size.width * 0.45)
+        layout.minimumLineSpacing = 16
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(ChatLogMessageCell.self, forCellWithReuseIdentifier: ChatLogMessageCell.cellId)
-        //        collectionView.backgroundColor = .chatLogBgColor
+        collectionView.backgroundColor = .chatLogBgColor
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .myPink
-//        collectionView.frame = view.bounds
+//        collectionView.backgroundColor = .myPink
         view.addSubview(collectionView)
     }
     
@@ -197,8 +195,28 @@ class ChatLogController: UIViewController, UITextFieldDelegate {
     
     // action for keyboard "Send" button
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print(inputTextField.text ?? "")
         
-        
+        if let friend = friend,
+           let text = inputTextField.text {
+            DispatchQueue.global().async { [weak self] in
+                // save sending text into DB
+                CoreDataManager.shared.createMessage(friend: friend, text: text, minutesAgo: 0, isSender: true) { message in
+
+                    self?.messages?.append(message)
+                    
+                    DispatchQueue.main.async {
+                        if let messages = self?.messages {
+                            let indexPath = IndexPath(item: messages.count - 1, section: 0)
+                            self?.collectionView.insertItems(at: [indexPath])
+                            self?.collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
+                            self?.inputTextField.text = nil
+                        }
+                        
+                    }
+                }
+            }
+        }
         return true
     }
 }

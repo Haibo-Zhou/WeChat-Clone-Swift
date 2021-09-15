@@ -80,9 +80,6 @@ extension MessageViewController: UITableViewDataSource {
         
         cell.message = messages?[indexPath.row]
         
-        // I could give a muteBell property to indicate if this friend is muted, but I would leave it for now
-//        cell.bellImageView.image = UIImage(systemName: "bell.slash")
-        
         return cell
     }
 }
@@ -92,8 +89,6 @@ extension MessageViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-//        let layout = UICollectionViewFlowLayout()
-//        layout.minimumLineSpacing = 16
         let controller = ChatLogController()
         controller.friend = self.messages?[indexPath.item].friend
         navigationController?.pushViewController(controller, animated: true)
