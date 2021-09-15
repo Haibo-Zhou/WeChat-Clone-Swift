@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
+class ChatLogController: UIViewController, UITextFieldDelegate {
     
     var friend: Friend? {
         didSet {
@@ -21,6 +21,8 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
     var bottomConstraint: NSLayoutConstraint!
     
     // UI elements
+    var collectionView: UICollectionView!
+    
     lazy var messageInputContainerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -83,8 +85,6 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
         super.viewDidLoad()
         
         tabBarController?.tabBar.isHidden = true
-        collectionView.backgroundColor = .chatLogBgColor
-        collectionView.register(ChatLogMessageCell.self, forCellWithReuseIdentifier: ChatLogMessageCell.cellId)
         
         // replace keyboard "return" with "Send"
         inputTextField.delegate = self
@@ -97,10 +97,17 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
     }
     
     private func setupViews() {
+        configureCollectionView()
         view.addSubview(messageInputContainerView)
         
         bottomConstraint = messageInputContainerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        let g = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.topAnchor.constraint(equalTo: g.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: messageInputContainerView.topAnchor),
+            
             messageInputContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             messageInputContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             bottomConstraint,
@@ -112,6 +119,22 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func configureCollectionView() {
+        let layout = UICollectionViewFlowLayout()
+//        layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 10, right: 20)
+//        layout.minimumLineSpacing = 50
+        //        layout.itemSize = CGSize(width: view.bounds.size.width * 0.45, height: view.bounds.size.width * 0.45)
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(ChatLogMessageCell.self, forCellWithReuseIdentifier: ChatLogMessageCell.cellId)
+        //        collectionView.backgroundColor = .chatLogBgColor
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.backgroundColor = .myPink
+//        collectionView.frame = view.bounds
+        view.addSubview(collectionView)
     }
     
     @objc func handleKeyboardNotification(notification: Notification) {
@@ -178,14 +201,17 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
         
         return true
     }
-    
+}
+
+
+extension ChatLogController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     // MARK: - collectionView methods
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages?.count ?? 0
     }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChatLogMessageCell.cellId, for: indexPath) as? ChatLogMessageCell else {
             fatalError("Unable to dequeue ChatLogMessageCell")
         }
@@ -221,13 +247,13 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
                 cell.textBubbleView.backgroundColor = .msgGreenBgColor
             }
         }
-
+        
         return cell
     }
     
-//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        inputTextField.endEditing(true)
-//    }
+    //    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    //        inputTextField.endEditing(true)
+    //    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -247,4 +273,3 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
         return UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
     }
 }
-

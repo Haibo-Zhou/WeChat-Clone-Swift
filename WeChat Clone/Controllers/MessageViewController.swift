@@ -92,9 +92,9 @@ extension MessageViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 16
-        let controller = ChatLogController(collectionViewLayout: layout)
+//        let layout = UICollectionViewFlowLayout()
+//        layout.minimumLineSpacing = 16
+        let controller = ChatLogController()
         controller.friend = self.messages?[indexPath.item].friend
         navigationController?.pushViewController(controller, animated: true)
     }
