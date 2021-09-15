@@ -20,19 +20,39 @@ class CoreDataManager {
         privateMOC.parent = self.managedObjectContext
     }
     
-    func fetchMessages(completion: @escaping ([Message]?) -> Void) {
+    func fetchMessages(from friend: Friend, completion: @escaping ([Message]?) -> Void) {
         privateMOC.performAndWait {
+            let fetchRequest: NSFetchRequest<Message> = Message.fetchRequest()
+            // to sort each message per their sent time
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+            // fetch messages belong the each friend
+            fetchRequest.predicate = NSPredicate(format: "friend.name = %@", friend.name ?? "")
+            // fetch the latest message from this friend
+            fetchRequest.fetchLimit = 1
             do {
-//                print("fetch all messages")
-//                printThreadStats()
-                let messages: [Message] = try privateMOC.fetch(Message.fetchRequest())
+                let messages: [Message] = try privateMOC.fetch(fetchRequest)
                 completion(messages)
             } catch {
+                print("fetch friends failed, \(error), \(error.localizedDescription)")
                 completion(nil)
             }
         }
     }
     
+    func fetchFriends(completion: @escaping ([Friend]?) -> Void) {
+        privateMOC.performAndWait {
+            let fetchRequest: NSFetchRequest<Friend> = Friend.fetchRequest()
+            do {
+                let friends: [Friend] = try privateMOC.fetch(fetchRequest)
+                completion(friends)
+            } catch {
+                print("fetch friends failed, \(error), \(error.localizedDescription)")
+                completion(nil)
+            }
+        }
+    }
+    
+    // not used yet
     func createFriend(name: String, profileImage: UIImage?, completion: @escaping (Friend?) -> Void) {
         privateMOC.performAndWait {
 //            print("create friend")
@@ -40,20 +60,21 @@ class CoreDataManager {
             let newFriend = Friend(context: privateMOC)
             newFriend.name = name
 //            newFriend.profileImageName = profileImageName
+            // convert image to data
             newFriend.profileImageData = profileImage?.cache_toData()
             synchronize()
             completion(newFriend)
         }
     }
     
-    func createMessage(friend: Friend, text: String, date: Date) {
+    func createMessage(friend: Friend, text: String, minutesAgo: Double) {
         privateMOC.performAndWait {
 //            print("create message")
 //            printThreadStats()
             let newMessage = Message(context: privateMOC)
             newMessage.friend = friend
             newMessage.text = text
-            newMessage.date = date
+            newMessage.date = Date().addingTimeInterval(-minutesAgo * 60)
             synchronize()
         }
     }

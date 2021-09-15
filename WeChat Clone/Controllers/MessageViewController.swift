@@ -50,12 +50,12 @@ class MessageViewController: UIViewController {
         tableView.frame = view.bounds
         tableView.rowHeight = 66
         
-        // setup navigaion items
+        // MARK: setup navigaion items
         let addButtonItem = UIBarButtonItem(customView: addButton)
         self.navigationItem.rightBarButtonItem = addButtonItem
         
-        // setup search bar
-//        setupSearchBar()
+        // MARK: setup search bar
+        // setupSearchBar()
     }
     
     
@@ -74,11 +74,8 @@ extension MessageViewController: UITableViewDataSource {
         
         cell.message = messages?[indexPath.row]
         
-//        cell.imageCover.image = UIImage(named: "gen")
+        // should add this mute bell state into DB too, but I would leave it for now
         cell.bellImageView.image = UIImage(systemName: "bell.slash")
-//        cell.titleLabel.text = "熊孩子书店 ｜ 热爱生活的小伙伴们"
-//        cell.subTitleLabel.text = "杜丘: 健谈但却不是话唠那种"
-//        cell.dateLabel.text = "10:12 AM"
         
         return cell
     }
@@ -88,6 +85,11 @@ extension MessageViewController: UITableViewDataSource {
 extension MessageViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let layout = UICollectionViewFlowLayout()
+        let controller = ChatLogController(collectionViewLayout: layout)
+        controller.friend = self.messages?[indexPath.item].friend
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
 

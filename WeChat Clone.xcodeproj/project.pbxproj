@@ -14,6 +14,8 @@
 		D05B7C5026F10CCA00A43814 /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B7C4A26F10CCA00A43814 /* Message+CoreDataProperties.swift */; };
 		D05B7C5126F10CCA00A43814 /* Thumbnail+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B7C4B26F10CCA00A43814 /* Thumbnail+CoreDataClass.swift */; };
 		D05B7C5226F10CCA00A43814 /* Thumbnail+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B7C4C26F10CCA00A43814 /* Thumbnail+CoreDataProperties.swift */; };
+		D05B7C5426F1A76F00A43814 /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B7C5326F1A76F00A43814 /* ChatLogController.swift */; };
+		D05B7C5626F1ADD900A43814 /* ChatLogMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B7C5526F1ADD900A43814 /* ChatLogMessageCell.swift */; };
 		D0C7FA5126EFAEC800F021D5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7FA5026EFAEC800F021D5 /* TabBarController.swift */; };
 		D0C7FA5326EFAF5F00F021D5 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7FA5226EFAF5F00F021D5 /* ContactViewController.swift */; };
 		D0C7FA5526EFAF6A00F021D5 /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7FA5426EFAF6A00F021D5 /* DiscoveryViewController.swift */; };
@@ -42,6 +44,8 @@
 		D05B7C4A26F10CCA00A43814 /* Message+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D05B7C4B26F10CCA00A43814 /* Thumbnail+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thumbnail+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D05B7C4C26F10CCA00A43814 /* Thumbnail+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thumbnail+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D05B7C5326F1A76F00A43814 /* ChatLogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
+		D05B7C5526F1ADD900A43814 /* ChatLogMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogMessageCell.swift; sourceTree = "<group>"; };
 		D0C7FA5026EFAEC800F021D5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D0C7FA5226EFAF5F00F021D5 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		D0C7FA5426EFAF6A00F021D5 /* DiscoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +96,7 @@
 				D0C7FA5226EFAF5F00F021D5 /* ContactViewController.swift */,
 				D0C7FA5426EFAF6A00F021D5 /* DiscoveryViewController.swift */,
 				D0C7FA5626EFAF7700F021D5 /* MeViewController.swift */,
+				D05B7C5326F1A76F00A43814 /* ChatLogController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -144,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				D0C7FA6926F0431400F021D5 /* MessageTableViewCell.swift */,
+				D05B7C5526F1ADD900A43814 /* ChatLogMessageCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -267,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D05B7C5426F1A76F00A43814 /* ChatLogController.swift in Sources */,
 				D05B7C5126F10CCA00A43814 /* Thumbnail+CoreDataClass.swift in Sources */,
 				D0D8E81126EFA9B7007DF995 /* MessageViewController.swift in Sources */,
 				D0C7FA6526F03E9900F021D5 /* StorageError.swift in Sources */,
@@ -277,6 +284,7 @@
 				D0C7FA5526EFAF6A00F021D5 /* DiscoveryViewController.swift in Sources */,
 				D05B7C4E26F10CCA00A43814 /* Friend+CoreDataProperties.swift in Sources */,
 				D0C7FA6026F03D8A00F021D5 /* Message.swift in Sources */,
+				D05B7C5626F1ADD900A43814 /* ChatLogMessageCell.swift in Sources */,
 				D0C7FA5126EFAEC800F021D5 /* TabBarController.swift in Sources */,
 				D0C7FA6D26F08D6100F021D5 /* CoreDataStack.swift in Sources */,
 				D05B7C5226F10CCA00A43814 /* Thumbnail+CoreDataProperties.swift in Sources */,
