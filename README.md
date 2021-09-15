@@ -1,3 +1,9 @@
+Solarized One           |  Solarized Ocean
+:-------------------------:|:-------------------------:
+![](https://www.haibosfashion.com/images/wechat-clone/2.png)  |  ![](https://www.haibosfashion.com/images/wechat-clone/1.png)
+
+
+
 ## A WeChat clone app, written in Swift
 
 **Features:**
