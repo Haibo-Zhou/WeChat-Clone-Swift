@@ -18,7 +18,10 @@ extension Message {
 
     @NSManaged public var date: Date?
     @NSManaged public var text: String?
+    @NSManaged public var isSender: Bool
+    @NSManaged public var imageData: Data?
     @NSManaged public var friend: Friend?
+    @NSManaged public var thumbnail: Thumbnail?
 
 }
 

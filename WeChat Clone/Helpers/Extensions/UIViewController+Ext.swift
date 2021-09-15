@@ -40,3 +40,17 @@ extension UIViewController {
         self.view.sendSubviewToBack(imageView)
     }
 }
+
+// MARK: - Dismiss keyboard when clicking anywhere else on screen
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}

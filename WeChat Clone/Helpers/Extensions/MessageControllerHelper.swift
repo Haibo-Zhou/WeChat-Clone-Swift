@@ -31,13 +31,31 @@ extension MessageViewController {
         self.showSpinner()
         DispatchQueue.global().async { [weak self] in
             let image1 = UIImage(named: "geng_profile")
-            CoreDataManager.shared.createFriend(name: "庚儿", profileImage: image1) { friend in
+            CoreDataManager.shared.createFriend(name: "庚儿", profileImage: image1, isMute: false) { friend in
                 guard let friend = friend else { return }
-                CoreDataManager.shared.createMessage(friend: friend, text: "😎", minutesAgo: 20)
+                CoreDataManager.shared.createMessage(friend: friend, text: "吃了么😎", minutesAgo: 20, isSender: false)
+                
+                // response message thread
+                CoreDataManager.shared.createMessage(friend: friend, text: "吃过了，今天起来还挺早的呢。", minutesAgo: 20, isSender: true)
+                
+                CoreDataManager.shared.createMessage(friend: friend, text: "这周好忙呀，周末哪天去🏊‍♀️？", minutesAgo: 19, isSender: false)
+                CoreDataManager.shared.createMessage(friend: friend, text: "礼拜天去吧，周六我要出去画画。", minutesAgo: 19, isSender: true)
+                CoreDataManager.shared.createMessage(friend: friend, text: "这周好忙呀，周末哪天去🏊‍♀️？", minutesAgo: 19, isSender: false)
+                CoreDataManager.shared.createMessage(friend: friend, text: "宁愿跑起来被拌倒无数次，也不愿规规矩矩走一辈子。就算跌倒也要豪迈的笑", minutesAgo: 19, isSender: true)
+                CoreDataManager.shared.createMessage(friend: friend, text: "每个人的一生都有许多梦想，但如果其中一个不断搅扰着你，剩下的就仅仅是行动了", minutesAgo: 19, isSender: false)
+
+                CoreDataManager.shared.createMessage(friend: friend, text: "还能冲动，表示你还对生活有激情，总是冲动，表示你还不懂生活。", minutesAgo: 19, isSender: true)
+
+                CoreDataManager.shared.createMessage(friend: friend, text: "强者向人们揭示的是确认人生的价值，弱者向人们揭示的却是对人生的怀疑。", minutesAgo: 19, isSender: false)
+
+                CoreDataManager.shared.createMessage(friend: friend, text: "宁愿跑起来被拌倒无数次，也不愿规规矩矩走一辈子。就算跌倒也要豪迈的笑", minutesAgo: 19, isSender: false)
+
+                
+                
             }
             
             let image2 = UIImage(named: "book_store_profile")
-            CoreDataManager.shared.createFriend(name: "熊孩子书店 ｜ 热爱生活的小伙伴们", profileImage: image2) { friend in
+            CoreDataManager.shared.createFriend(name: "熊孩子书店 ｜ 热爱生活的小伙伴们", profileImage: image2, isMute: true) { friend in
                 guard let friend = friend else { return }
                 // the 1st message for bookstore
                 CoreDataManager.shared.createMessage(friend: friend, text: "Hey dear.", minutesAgo: 3)
@@ -47,24 +65,27 @@ extension MessageViewController {
             }
             
             let image99 = UIImage(named: "Trump")
-            CoreDataManager.shared.createFriend(name: "Donald Trump", profileImage: image99) { friend in
+            CoreDataManager.shared.createFriend(name: "Donald Trump", profileImage: image99, isMute: true) { friend in
                 guard let friend = friend else { return }
                 CoreDataManager.shared.createMessage(friend: friend, text: "You're fired!", minutesAgo: 36)
             }
             
             let image3 = UIImage(named: "zan_profile")
-            CoreDataManager.shared.createFriend(name: "先先贝", profileImage: image3) { friend in
+            CoreDataManager.shared.createFriend(name: "先先贝", profileImage: image3, isMute: false) { friend in
                 guard let friend = friend else { return }
                 // 1 day
                 CoreDataManager.shared.createMessage(friend: friend, text: "你吃基围虾也太奢侈了", minutesAgo: 24 * 60)
             }
             
             let image4 = UIImage(named: "Taylor-Swift-1")
-            CoreDataManager.shared.createFriend(name: "Taylor Swift", profileImage: image4) { friend in
+            CoreDataManager.shared.createFriend(name: "Taylor Swift", profileImage: image4, isMute: false) { friend in
                 guard let friend = friend else { return }
                 // 8 days
                 CoreDataManager.shared.createMessage(friend: friend, text: "How you doing?", minutesAgo: 24 * 60 * 8)
             }
+            
+            
+            
             //
             //            let image5 = UIImage(named: "Taylor-Swift-2")
             //            CoreDataManager.shared.createFriend(name: "Taylor Swift's Fans", profileImage: image5) { friend in
@@ -137,6 +158,8 @@ extension MessageViewController {
             
             // init messages array
             self?.messages = [Message]()
+            
+            print("All friends in Chat page: ")
             for friend in friends {
                 print(friend.name ?? "")
                 

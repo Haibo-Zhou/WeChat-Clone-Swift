@@ -18,7 +18,7 @@ extension Thumbnail {
 
     @NSManaged public var id: Double
     @NSManaged public var imageData: Data?
-    @NSManaged public var toFriend: Friend?
+    @NSManaged public var message: Message?
 
 }
 

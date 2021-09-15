@@ -44,6 +44,12 @@ class MessageViewController: UIViewController {
         setupData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     func setupViews() {
         view.addSubview(tableView)
         
@@ -75,7 +81,7 @@ extension MessageViewController: UITableViewDataSource {
         cell.message = messages?[indexPath.row]
         
         // I could give a muteBell property to indicate if this friend is muted, but I would leave it for now
-        cell.bellImageView.image = UIImage(systemName: "bell.slash")
+//        cell.bellImageView.image = UIImage(systemName: "bell.slash")
         
         return cell
     }
@@ -87,6 +93,7 @@ extension MessageViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 16
         let controller = ChatLogController(collectionViewLayout: layout)
         controller.friend = self.messages?[indexPath.item].friend
         navigationController?.pushViewController(controller, animated: true)

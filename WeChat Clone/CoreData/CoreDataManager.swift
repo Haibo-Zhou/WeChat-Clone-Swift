@@ -53,7 +53,7 @@ class CoreDataManager {
     }
     
     // not used yet
-    func createFriend(name: String, profileImage: UIImage?, completion: @escaping (Friend?) -> Void) {
+    func createFriend(name: String, profileImage: UIImage?, isMute: Bool, completion: @escaping (Friend?) -> Void) {
         privateMOC.performAndWait {
 //            print("create friend")
 //            printThreadStats()
@@ -62,12 +62,13 @@ class CoreDataManager {
 //            newFriend.profileImageName = profileImageName
             // convert image to data
             newFriend.profileImageData = profileImage?.cache_toData()
+            newFriend.isMute = isMute
             synchronize()
             completion(newFriend)
         }
     }
     
-    func createMessage(friend: Friend, text: String, minutesAgo: Double) {
+    func createMessage(friend: Friend, text: String, minutesAgo: Double, isSender: Bool = false) {
         privateMOC.performAndWait {
 //            print("create message")
 //            printThreadStats()
@@ -75,20 +76,21 @@ class CoreDataManager {
             newMessage.friend = friend
             newMessage.text = text
             newMessage.date = Date().addingTimeInterval(-minutesAgo * 60)
+            newMessage.isSender = isSender
             synchronize()
         }
     }
     
-    func createMessage(friend: Friend, text: String, date: Date, completion: @escaping (Message?) -> Void) {
-        privateMOC.performAndWait {
-            let newMessage = Message(context: privateMOC)
-            newMessage.friend = friend
-            newMessage.text = text
-            newMessage.date = date
-            synchronize()
-            completion(newMessage)
-        }
-    }
+//    func createMessage(friend: Friend, text: String, date: Date, completion: @escaping (Message?) -> Void) {
+//        privateMOC.performAndWait {
+//            let newMessage = Message(context: privateMOC)
+//            newMessage.friend = friend
+//            newMessage.text = text
+//            newMessage.date = date
+//            synchronize()
+//            completion(newMessage)
+//        }
+//    }
     
     func removeAllFromEntity(entityName: String) {
         privateMOC.performAndWait {

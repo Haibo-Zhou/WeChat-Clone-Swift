@@ -22,7 +22,6 @@ class ChatLogMessageCell: UICollectionViewCell {
     
     lazy var textBubbleView: UIView = {
         let view = UIView()
-        view.backgroundColor = .msgGrayBgColor
         view.layer.cornerRadius = 15
         view.layer.masksToBounds = true
         return view
@@ -34,7 +33,16 @@ class ChatLogMessageCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 8
         imageView.clipsToBounds = true
-//        imageView.backgroundColor = .systemRed
+        return imageView
+    }()
+    
+    lazy var myImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 8
+        imageView.clipsToBounds = true
+        imageView.image = UIImage(named: "my_picture")
         return imageView
     }()
     
@@ -48,6 +56,7 @@ class ChatLogMessageCell: UICollectionViewCell {
         addSubview(textBubbleView)
         addSubview(messageTextView)
         addSubview(profileImageView)
+        addSubview(myImageView)
         
         let g = contentView
         NSLayoutConstraint.activate([
@@ -55,10 +64,12 @@ class ChatLogMessageCell: UICollectionViewCell {
             profileImageView.widthAnchor.constraint(equalToConstant: 40),
             profileImageView.heightAnchor.constraint(equalTo: profileImageView.widthAnchor),
             profileImageView.topAnchor.constraint(equalTo: g.topAnchor),
-//            profileImageView.bottomAnchor.constraint(equalTo: g.bottomAnchor)
             
+            myImageView.trailingAnchor.constraint(equalTo: g.trailingAnchor, constant: -8),
+            myImageView.widthAnchor.constraint(equalToConstant: 40),
+            myImageView.heightAnchor.constraint(equalTo: myImageView.widthAnchor),
+            myImageView.topAnchor.constraint(equalTo: g.topAnchor)
         ])
-
     }
     
     required init?(coder: NSCoder) {

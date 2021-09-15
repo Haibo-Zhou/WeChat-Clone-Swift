@@ -18,8 +18,8 @@ extension Friend {
 
     @NSManaged public var name: String?
     @NSManaged public var profileImageData: Data?
+    @NSManaged public var isMute: Bool
     @NSManaged public var messages: NSSet?
-    @NSManaged public var thumnail: Thumbnail?
 
 }
 

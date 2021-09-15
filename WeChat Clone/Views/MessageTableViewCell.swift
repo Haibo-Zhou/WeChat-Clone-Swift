@@ -40,6 +40,10 @@ class MessageTableViewCell: UITableViewCell {
                 
                 dateLabel.text = dateFormatter.string(from: date)
             }
+            
+            if message?.friend?.isMute == true { // mute
+                bellImageView.image = UIImage(systemName: "bell.slash")
+            }
         }
     }
     
