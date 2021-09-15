@@ -12,6 +12,16 @@ class ChatLogMessageCell: UICollectionViewCell {
     static let cellId = "ChatLogCellId"
     
     // MARK: UI elements
+    lazy var messageImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = 6
+        imageView.clipsToBounds = true
+//        imageView.backgroundColor = .blue
+        return imageView
+    }()
+    
     lazy var messageTextView: UITextView = {
         let textView = UITextView()
         textView.font = .systemFont(ofSize: 18)
@@ -51,12 +61,14 @@ class ChatLogMessageCell: UICollectionViewCell {
         setupViews()
     }
     
+    // MARK: - setupViews
     func setupViews() {
 //        backgroundColor = .brown
         addSubview(textBubbleView)
         addSubview(messageTextView)
         addSubview(profileImageView)
         addSubview(myImageView)
+        addSubview(messageImageView)
         
         let g = contentView
         NSLayoutConstraint.activate([
@@ -68,7 +80,12 @@ class ChatLogMessageCell: UICollectionViewCell {
             myImageView.trailingAnchor.constraint(equalTo: g.trailingAnchor, constant: -8),
             myImageView.widthAnchor.constraint(equalToConstant: 40),
             myImageView.heightAnchor.constraint(equalTo: myImageView.widthAnchor),
-            myImageView.topAnchor.constraint(equalTo: g.topAnchor)
+            myImageView.topAnchor.constraint(equalTo: g.topAnchor),
+            
+            messageImageView.topAnchor.constraint(equalTo: myImageView.topAnchor),
+            messageImageView.trailingAnchor.constraint(equalTo: myImageView.leadingAnchor, constant: -16),
+            messageImageView.widthAnchor.constraint(equalTo: g.widthAnchor, multiplier: 0.5),
+            messageImageView.heightAnchor.constraint(equalTo: messageImageView.widthAnchor)
         ])
     }
     

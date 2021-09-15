@@ -53,13 +53,10 @@ class CoreDataManager {
     }
     
     // not used yet
-    func createFriend(name: String, profileImage: UIImage?, isMute: Bool, completion: @escaping (Friend?) -> Void) {
+    func createFriend(name: String, profileImage: UIImage?, isMute: Bool = false, completion: @escaping (Friend?) -> Void) {
         privateMOC.performAndWait {
-//            print("create friend")
-//            printThreadStats()
             let newFriend = Friend(context: privateMOC)
             newFriend.name = name
-//            newFriend.profileImageName = profileImageName
             // convert image to data
             newFriend.profileImageData = profileImage?.cache_toData()
             newFriend.isMute = isMute
@@ -68,24 +65,26 @@ class CoreDataManager {
         }
     }
     
-    func createMessage(friend: Friend, text: String, minutesAgo: Double, isSender: Bool = false) {
+    func createMessage(friend: Friend, text: String? = nil, messageImage: UIImage? = nil, minutesAgo: Double, isSender: Bool = false) {
         privateMOC.performAndWait {
-//            print("create message")
-//            printThreadStats()
             let newMessage = Message(context: privateMOC)
             newMessage.friend = friend
             newMessage.text = text
+            // convert image to data
+            newMessage.imageData = messageImage?.cache_toData()
             newMessage.date = Date().addingTimeInterval(-minutesAgo * 60)
             newMessage.isSender = isSender
             synchronize()
         }
     }
     
-    func createMessage(friend: Friend, text: String, minutesAgo: Double, isSender: Bool = false, completion: @escaping (Message) -> Void) {
+    func createMessage(friend: Friend, text: String? = nil, messageImage: UIImage? = nil, minutesAgo: Double, isSender: Bool = false, completion: @escaping (Message) -> Void) {
         privateMOC.performAndWait {
             let newMessage = Message(context: privateMOC)
             newMessage.friend = friend
             newMessage.text = text
+            // convert image to data
+            newMessage.imageData = messageImage?.cache_toData()
             newMessage.date = Date().addingTimeInterval(-minutesAgo * 60)
             newMessage.isSender = isSender
             synchronize()

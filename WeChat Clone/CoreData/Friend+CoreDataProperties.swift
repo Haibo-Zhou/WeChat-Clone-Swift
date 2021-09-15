@@ -16,9 +16,9 @@ extension Friend {
         return NSFetchRequest<Friend>(entityName: "Friend")
     }
 
+    @NSManaged public var isMute: Bool
     @NSManaged public var name: String?
     @NSManaged public var profileImageData: Data?
-    @NSManaged public var isMute: Bool
     @NSManaged public var messages: NSSet?
 
 }

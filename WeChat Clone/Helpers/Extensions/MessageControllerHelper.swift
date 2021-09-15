@@ -48,10 +48,7 @@ extension MessageViewController {
 
                 CoreDataManager.shared.createMessage(friend: friend, text: "强者向人们揭示的是确认人生的价值，弱者向人们揭示的却是对人生的怀疑。", minutesAgo: 19, isSender: false)
 
-                CoreDataManager.shared.createMessage(friend: friend, text: "宁愿跑起来被拌倒无数次，也不愿规规矩矩走一辈子。就算跌倒也要豪迈的笑", minutesAgo: 19, isSender: false)
-
-                
-                
+                CoreDataManager.shared.createMessage(friend: friend, text: "宁愿跑起来被拌倒无数次，也不愿规规矩矩走一辈子。就算跌倒也要豪迈的笑", minutesAgo: 0, isSender: false)
             }
             
             let image2 = UIImage(named: "book_store_profile")
@@ -83,69 +80,66 @@ extension MessageViewController {
                 // 8 days
                 CoreDataManager.shared.createMessage(friend: friend, text: "How you doing?", minutesAgo: 24 * 60 * 8)
             }
-            
-            
-            
-            //
-            //            let image5 = UIImage(named: "Taylor-Swift-2")
-            //            CoreDataManager.shared.createFriend(name: "Taylor Swift's Fans", profileImage: image5) { friend in
-            //                guard let friend = friend else { return }
-            //                CoreDataManager.shared.createMessage(friend: friend, text: "People haven't always been there for me but music always has.", date: Date())
-            //            }
-            //
-            //            let image6 = UIImage(named: "Taylor-Swift-3")
-            //            CoreDataManager.shared.createFriend(name: "Taylor Swift 1987", profileImage: image6) { friend in
-            //                guard let friend = friend else { return }
-            //                CoreDataManager.shared.createMessage(friend: friend, text: "When I was a little girl I used to read fairy tales.", date: Date())
-            //            }
-            //
-            //            let image7 = UIImage(named: "Taylor-Swift-4")
-            //            CoreDataManager.shared.createFriend(name: "Taylor Swift #Num 8", profileImage: image7) { friend in
-            //                guard let friend = friend else { return }
-            //                CoreDataManager.shared.createMessage(friend: friend, text: "To me, Fearless is not the absense of fear.", date: Date())
-            //            }
-            //
-            //            let image8 = UIImage(named: "Taylor-Swift-5")
-            //            CoreDataManager.shared.createFriend(name: "Best of Taylor Swift", profileImage: image8) { friend in
-            //                guard let friend = friend else { return }
-            //                CoreDataManager.shared.createMessage(friend: friend, text: "This is a new year. A new beginning. And things will change.", date: Date())
-            //            }
-            //
-            //            let image9 = UIImage(named: "Robert-Downey-JR-1")
-            //            CoreDataManager.shared.createFriend(name: "Robert Downey JR", profileImage: image9) { friend in
-            //                guard let friend = friend else { return }
-            //                CoreDataManager.shared.createMessage(friend: friend, text: "I think that we all do heroic things, but hero is not a noun, it's a verb.", date: Date())
-            //            }
-            //
-            //            let image10 = UIImage(named: "Robert-Downey-JR-2")
-            //            CoreDataManager.shared.createFriend(name: "Best of RDJ", profileImage: image10) { friend in
-            //                guard let friend = friend else { return }
-            //                CoreDataManager.shared.createMessage(friend: friend, text: "The lesson is that you can still make mistakes and be forgiven.", date: Date())
-            //            }
-            //
-            //            let image11 = UIImage(named: "Robert-Downey-JR-3")
-            //            CoreDataManager.shared.createFriend(name: "RDJ's fans", profileImage: image11) { friend in
-            //                guard let friend = friend else { return }
-            //                CoreDataManager.shared.createMessage(friend: friend, text: "I've noticed that worrying is like praying for what you don't want to happen.", date: Date())
-            //            }
-            //
-            //            let image12 = UIImage(named: "Alan-Shore")
-            //            CoreDataManager.shared.createFriend(name: "Alan Shore", profileImage: image12) { friend in
-            //                guard let friend = friend else { return }
-            //                CoreDataManager.shared.createMessage(friend: friend, text: "I demand only one thing in a relationship that I remain utterly alone.", date: Date())
-            //            }
-            //            let image13 = UIImage(named: "Denny-Crane")
-            //            CoreDataManager.shared.createFriend(name: "Denny Crane", profileImage: image13) { friend in
-            //                guard let friend = friend else { return }
-            //                CoreDataManager.shared.createMessage(friend: friend, text: "Denny Crane, Reasonable Doubt for a reasonable fee.", date: Date())
-            //            }
-            //
-            //            let image14 = UIImage(named: "subscription_account")
-            //            CoreDataManager.shared.createFriend(name: "订阅号消息", profileImage: image14) { friend in
-            //                guard let friend = friend else { return }
-            //                CoreDataManager.shared.createMessage(friend: friend, text: "[11条] 大连本地宝：在大连千万别忘记办这个证！", date: Date())
-            //                print("🌈 Data creation complete")
-            //            }
+
+            let image5 = UIImage(named: "Taylor-Swift-2")
+            CoreDataManager.shared.createFriend(name: "Taylor Swift's Fans", profileImage: image5, isMute: false) { friend in
+                guard let friend = friend else { return }
+                CoreDataManager.shared.createMessage(friend: friend, text: "People haven't always been there for me but music always has.", minutesAgo: 12)
+            }
+
+            let image6 = UIImage(named: "Taylor-Swift-3")
+            CoreDataManager.shared.createFriend(name: "Taylor Swift 1987", profileImage: image6, isMute: false) { friend in
+                guard let friend = friend else { return }
+                CoreDataManager.shared.createMessage(friend: friend, text: "When I was a little girl I used to read fairy tales.", minutesAgo: 4)
+            }
+
+            let image7 = UIImage(named: "Taylor-Swift-4")
+            CoreDataManager.shared.createFriend(name: "Taylor Swift #Num 8", profileImage: image7, isMute: true) { friend in
+                guard let friend = friend else { return }
+                CoreDataManager.shared.createMessage(friend: friend, text: "To me, Fearless is not the absense of fear.", minutesAgo: 190)
+            }
+
+            let image8 = UIImage(named: "Taylor-Swift-5")
+            CoreDataManager.shared.createFriend(name: "Best of Taylor Swift", profileImage: image8, isMute: false) { friend in
+                guard let friend = friend else { return }
+                CoreDataManager.shared.createMessage(friend: friend, text: "This is a new year. A new beginning. And things will change.", minutesAgo: 0)
+            }
+
+            let image9 = UIImage(named: "Robert-Downey-JR-1")
+            CoreDataManager.shared.createFriend(name: "Robert Downey JR", profileImage: image9, isMute: false) { friend in
+                guard let friend = friend else { return }
+                CoreDataManager.shared.createMessage(friend: friend, text: "I think that we all do heroic things, but hero is not a noun, it's a verb.", minutesAgo: 32)
+            }
+
+            let image10 = UIImage(named: "Robert-Downey-JR-2")
+            CoreDataManager.shared.createFriend(name: "Best of RDJ", profileImage: image10) { friend in
+                guard let friend = friend else { return }
+                CoreDataManager.shared.createMessage(friend: friend, text: "The lesson is that you can still make mistakes and be forgiven.", minutesAgo: 24 * 60 * 9)
+            }
+
+            let image11 = UIImage(named: "Robert-Downey-JR-3")
+            CoreDataManager.shared.createFriend(name: "RDJ's fans", profileImage: image11) { friend in
+                guard let friend = friend else { return }
+                CoreDataManager.shared.createMessage(friend: friend, text: "I've noticed that worrying is like praying for what you don't want to happen.", minutesAgo: 33)
+            }
+
+            let image12 = UIImage(named: "Alan-Shore")
+            CoreDataManager.shared.createFriend(name: "Alan Shore", profileImage: image12) { friend in
+                guard let friend = friend else { return }
+                CoreDataManager.shared.createMessage(friend: friend, text: "I demand only one thing in a relationship that I remain utterly alone.", minutesAgo: 99)
+            }
+            let image13 = UIImage(named: "Denny-Crane")
+            CoreDataManager.shared.createFriend(name: "Denny Crane", profileImage: image13) { friend in
+                guard let friend = friend else { return }
+                CoreDataManager.shared.createMessage(friend: friend, text: "Denny Crane, Reasonable Doubt for a reasonable fee.", minutesAgo: 24 * 60 * 100)
+            }
+
+            let image14 = UIImage(named: "subscription_account")
+            CoreDataManager.shared.createFriend(name: "订阅号消息", profileImage: image14) { friend in
+                guard let friend = friend else { return }
+                CoreDataManager.shared.createMessage(friend: friend, text: "[11条] 大连本地宝：在大连千万别忘记办这个证！", minutesAgo: 0)
+                print("🌈 Data creation complete")
+            }
             
             // load data after creating it in CoreData
             self?.loadData()

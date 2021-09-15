@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ChatLogController: UIViewController, UITextFieldDelegate {
+class ChatLogController: UIViewController {
     
     var friend: Friend? {
         didSet {
@@ -20,6 +20,7 @@ class ChatLogController: UIViewController, UITextFieldDelegate {
     
     var messages: [Message]?
     var bottomConstraint: NSLayoutConstraint!
+    var imagePicker: ImagePicker!
     
     // UI elements
     var collectionView: UICollectionView!
@@ -65,9 +66,11 @@ class ChatLogController: UIViewController, UITextFieldDelegate {
         return button
     }()
     
-    @objc func addButtonTapped(_ sender: Any) {
+    @objc func addButtonTapped(_ sender: UIButton) {
         print("addButton tapped")
+        self.imagePicker.present(from: sender)
     }
+    
     
     lazy var faceButton: UIButton = {
         let button = UIButton()
@@ -95,6 +98,8 @@ class ChatLogController: UIViewController, UITextFieldDelegate {
         self.hideKeyboardWhenTappedAround()
         
         setupViews()
+        
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
     }
     
     private func setupViews() {
@@ -193,16 +198,104 @@ class ChatLogController: UIViewController, UITextFieldDelegate {
         ])
     }
     
+    
+}
+
+// MARK: - UICollectionView
+extension ChatLogController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return messages?.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChatLogMessageCell.cellId, for: indexPath) as? ChatLogMessageCell else {
+            fatalError("Unable to dequeue ChatLogMessageCell")
+        }
+        // configure the cell
+        let message = self.messages?[indexPath.item]
+        cell.messageTextView.text = message?.text
+        
+        if let imageData = message?.imageData {
+            cell.messageImageView.image = UIImage(data: imageData)
+            // hide messageTextView related UI elements
+            cell.messageTextView.isHidden = true
+            cell.textBubbleView.isHidden = true
+            cell.profileImageView.isHidden = true
+            
+            // show imageView
+            cell.messageImageView.isHidden = false
+        } else {
+            cell.messageImageView.isHidden = true
+            
+            if let message = message, let messageText = message.text,
+               let profileImageData = message.friend?.profileImageData {
+                
+                if let profileImage = UIImage(data: profileImageData) {
+                    cell.profileImageView.image = profileImage
+                }
+                
+                let size = CGSize(width: 250, height: 1000)
+                let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+                let estimatedFrame = NSString(string: messageText).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18)], context: nil)
+                
+                if message.isSender == false {
+                    cell.messageTextView.frame = CGRect(x: 60 + 8, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 20)
+                    cell.textBubbleView.frame = CGRect(x: 60, y: 0, width: estimatedFrame.width + 16 + 8, height: estimatedFrame.height + 20)
+                    
+                    cell.profileImageView.isHidden = false
+                    cell.myImageView.isHidden = true
+                    cell.textBubbleView.backgroundColor = .msgGrayBgColor
+                } else { // I'm sender
+                    cell.messageTextView.frame = CGRect(x: view.frame.width - estimatedFrame.width - 16 - 16 - 40, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 20)
+                    cell.textBubbleView.frame = CGRect(x: view.frame.width - estimatedFrame.width - 16 - 8 - 16 - 40, y: 0, width: estimatedFrame.width + 16 + 8, height: estimatedFrame.height + 20)
+                    
+                    cell.profileImageView.isHidden = true
+                    cell.myImageView.isHidden = false
+                    cell.textBubbleView.backgroundColor = .msgGreenBgColor
+                }
+            }
+        }
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        // if message only contains text
+        let message = messages?[indexPath.item]
+        if let messageText = message?.text {
+            let size = CGSize(width: 250, height: 1000)
+            let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+            let estimatedFrame = NSString(string: messageText).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18)], context: nil)
+            
+            return CGSize(width: view.frame.width, height: estimatedFrame.height + 20)
+        }
+        // if message only contains image
+        else if let _ = message?.imageData {
+            return CGSize(width: view.frame.width, height: 200)
+        }
+        
+        return CGSize(width: view.frame.width, height: 100)
+    }
+    
+    // add a padding for content in cell
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension ChatLogController: UITextFieldDelegate {
     // action for keyboard "Send" button
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print(inputTextField.text ?? "")
         
         if let friend = friend,
-           let text = inputTextField.text {
+           let text = inputTextField.text, text != "" {
             DispatchQueue.global().async { [weak self] in
                 // save sending text into DB
                 CoreDataManager.shared.createMessage(friend: friend, text: text, minutesAgo: 0, isSender: true) { message in
-
+                    
                     self?.messages?.append(message)
                     
                     DispatchQueue.main.async {
@@ -221,73 +314,27 @@ class ChatLogController: UIViewController, UITextFieldDelegate {
     }
 }
 
-
-extension ChatLogController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    // MARK: - collectionView methods
+extension ChatLogController: ImagePickerDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return messages?.count ?? 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChatLogMessageCell.cellId, for: indexPath) as? ChatLogMessageCell else {
-            fatalError("Unable to dequeue ChatLogMessageCell")
-        }
-        // configure the cell
-        cell.messageTextView.text = self.messages?[indexPath.item].text
-        
-        if let message = messages?[indexPath.item], let messageText = message.text,
-           let profileImageData = message.friend?.profileImageData {
-            
-            if let profileImage = UIImage(data: profileImageData) {
-                cell.profileImageView.image = profileImage
-            }
-            
-            let size = CGSize(width: 250, height: 1000)
-            let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-            let estimatedFrame = NSString(string: messageText).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18)], context: nil)
-            
-            if message.isSender == false {
-                cell.messageTextView.frame = CGRect(x: 60 + 8, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 20)
-                cell.textBubbleView.frame = CGRect(x: 60, y: 0, width: estimatedFrame.width + 16 + 8, height: estimatedFrame.height + 20)
-                
-                cell.profileImageView.isHidden = false
-                cell.myImageView.isHidden = true
-                cell.textBubbleView.backgroundColor = .msgGrayBgColor
-            } else {
-                
-                // sending message
-                cell.messageTextView.frame = CGRect(x: view.frame.width - estimatedFrame.width - 16 - 16 - 40, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 20)
-                cell.textBubbleView.frame = CGRect(x: view.frame.width - estimatedFrame.width - 16 - 8 - 16 - 40, y: 0, width: estimatedFrame.width + 16 + 8, height: estimatedFrame.height + 20)
-                
-                cell.profileImageView.isHidden = true
-                cell.myImageView.isHidden = false
-                cell.textBubbleView.backgroundColor = .msgGreenBgColor
+    func didSelect(image: UIImage?) {
+        if let friend = self.friend {
+            DispatchQueue.global().async { [weak self] in
+                // save sending image into DB
+                CoreDataManager.shared.createMessage(friend: friend, messageImage: image, minutesAgo: 0, isSender: true) { message in
+                    
+                    self?.messages?.append(message)
+                    print("messages new count: \(self?.messages?.count ?? 0)")
+                    
+                    DispatchQueue.main.async {
+                        if let messages = self?.messages {
+                            let indexPath = IndexPath(item: messages.count - 1, section: 0)
+                            self?.collectionView.insertItems(at: [indexPath])
+                            self?.collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
+                            self?.inputTextField.text = nil
+                        }
+                    }
+                }
             }
         }
-        
-        return cell
-    }
-    
-    //    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    //        inputTextField.endEditing(true)
-    //    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        if let messageText = messages?[indexPath.item].text {
-            let size = CGSize(width: 250, height: 1000)
-            let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-            let estimatedFrame = NSString(string: messageText).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18)], context: nil)
-            
-            return CGSize(width: view.frame.width, height: estimatedFrame.height + 20)
-        }
-        
-        return CGSize(width: view.frame.width, height: 100)
-    }
-    
-    // add a padding for content in cell
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
     }
 }

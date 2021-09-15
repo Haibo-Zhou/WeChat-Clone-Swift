@@ -12,16 +12,9 @@
         <attribute name="isSender" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="text" optional="YES" attributeType="String"/>
         <relationship name="friend" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Friend" inverseName="messages" inverseEntity="Friend"/>
-        <relationship name="thumbnail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Thumbnail" inverseName="message" inverseEntity="Thumbnail"/>
-    </entity>
-    <entity name="Thumbnail" representedClassName="Thumbnail" syncable="YES">
-        <attribute name="id" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
-        <relationship name="message" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Message" inverseName="thumbnail" inverseEntity="Message"/>
     </entity>
     <elements>
         <element name="Friend" positionX="-220.3359375" positionY="-194.3671875" width="128" height="103"/>
-        <element name="Message" positionX="124.5" positionY="-87.74609375" width="128" height="133"/>
-        <element name="Thumbnail" positionX="-268.79296875" positionY="-0.09375" width="128" height="88"/>
+        <element name="Message" positionX="124.5" positionY="-87.74609375" width="128" height="104"/>
     </elements>
 </model>
